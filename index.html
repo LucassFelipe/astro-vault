@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Catálogo pessoal de imagens e vídeos do acervo da NASA.">
+    <title>AstroVault — Catálogo da NASA</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="marca">
+            <div>
+                <p class="rotulo">Acervo digital · Astronomia</p>
+                <h1>AstroVault</h1>
+                <p class="subtitulo">Catálogo pessoal de imagens e vídeos da NASA</p>
+            </div>
+        </div>
+        <nav class="abas" aria-label="Seções do catálogo">
+            <button id="aba-explorar" class="aba ativa" type="button" aria-selected="true">Explorar</button>
+            <button id="aba-album" class="aba" type="button" aria-selected="false">
+                Meu álbum <span id="contador-album" class="contador">0</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="explorar" class="secao">
+            <form id="formulario-busca" class="busca" role="search">
+                <label class="somente-leitor" for="campo-busca">Termo de busca</label>
+                <input id="campo-busca" type="search" value="nebula" placeholder="Nebula, Marte, Apollo…" autocomplete="off">
+                <label class="somente-leitor" for="tipo-midia">Tipo de mídia</label>
+                <select id="tipo-midia">
+                    <option value="todos">Todos</option>
+                    <option value="image">Imagens</option>
+                    <option value="video">Vídeos</option>
+                </select>
+                <button type="submit">Pesquisar</button>
+            </form>
+            <p id="estado" class="estado" role="status" aria-live="polite">Pronto para consultar o acervo.</p>
+            <div id="resultados" class="grade"></div>
+            <div class="mais-linha">
+                <button id="carregar-mais" class="botao-simples" type="button" hidden>Carregar mais</button>
+            </div>
+        </section>
+
+        <section id="album" class="secao" hidden>
+            <div class="album-cabecalho">
+                <div>
+                    <h2>Meu álbum</h2>
+                    <p>Registros guardados neste navegador. As mídias são consultadas no acervo da NASA.</p>
+                </div>
+                <button id="limpar-album" class="botao-simples" type="button">Limpar álbum</button>
+            </div>
+            <div id="grade-album" class="grade"></div>
+        </section>
+    </main>
+
+    <dialog id="detalhe" class="detalhe" aria-labelledby="titulo-detalhe">
+        <button id="fechar-detalhe" class="fechar" type="button" aria-label="Fechar">×</button>
+        <div id="midia-detalhe" class="midia-detalhe"></div>
+        <div class="detalhe-corpo">
+            <h2 id="titulo-detalhe"></h2>
+            <p id="descricao-detalhe"></p>
+            <a id="link-detalhe" href="#" target="_blank" rel="noopener noreferrer">Ver ficha na NASA ↗</a>
+        </div>
+    </dialog>
+
+    <footer class="rodape">Fonte: NASA Image and Video Library.</footer>
+    <script src="script.js" defer></script>
+</body>
+</html>
